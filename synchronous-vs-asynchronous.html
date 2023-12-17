@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let log = console.log;
+        let a = 5;
+        let b = 50;
+        let a1 = function(){return 5}  ;
+      //   if we want to execute just here we can do folowing
+      //   let a1 = ()();
+      //   now put your function in first parenthesis
+      let a11 = (function(){return 5})();
+    //   no matter how long out function body has line of code js firat run this function 
+    //   then move to next line
+      log(a11)
+      let b1 = function(num){return num*10}
+      let b2 = function(){return 10};
+      log(b1(b2()))
+    //   all above code is synchronous code 
+    // now see the asyncronous code
+    // settimeout, callback for geolocation,filesystem.interaction,
+    // database calls, even dom event listeners,fetch
+    // let myvar1 = 200;
+    // log(myvar1)
+    // run above code
+    let myvar1 = 200;
+    setTimeout(function(){myvar1++ ; log("it is late printed because of async nature of settimeout, javascript first done all synchronous code then async,even if we put 0 instead of 1000 it will print late than log(myvar1)",myvar1),1000});
+    log(myvar1)
+    // let p  = new Promise(function(){})
+    // log(p)
+    let p  = new Promise(function(resolve,reject){
+        
+          setTimeout(function(){
+           resolve("wow")
+     },0)
+       
+    })
+    log(p)
+      setTimeout(function(){
+            log(p)
+        },0)
+        log(p)
+        p.then(function(val){
+            log(val)
+
+        })
+        // then get log as soon as the value is available
+    
+      </script>
+</body>
+</html>
